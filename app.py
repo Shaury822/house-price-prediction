@@ -3,7 +3,11 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load("house_price_model.pkl")
+import os
+import joblib
+
+model_path = os.path.join(os.path.dirname(__file__), "house_price_model.pkl")
+model = joblib.load(model_path)
 
 st.title("🏠 House Price Prediction")
 st.write("Enter house details to predict the price.")
@@ -38,3 +42,4 @@ if st.button("Predict House Price"):
         "Predicted House Price",
         f"{prediction[0]:.2f} Lakh"
     )
+
